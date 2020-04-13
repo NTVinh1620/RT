@@ -1,0 +1,81 @@
+# depslib dependency file v1.0
+1586186799 source:c:\users\pc\documents\c++ code blocks\pacman\main.cpp
+	<iostream>
+	<SDL.h>
+	<ctime>
+	<cstdlib>
+	<cmath>
+	"Pacman.h"
+	"Matrix.h"
+
+1585811467 c:\users\pc\documents\c++ code blocks\pacman\pacman.h
+	<iostream>
+	<SDL.h>
+	<ctime>
+	<cstdlib>
+	<cmath>
+
+1585811467 source:c:\users\pc\documents\c++ code blocks\pacman\pacman.cpp
+	<iostream>
+	<SDL.h>
+	<ctime>
+	<cstdlib>
+	<cmath>
+
+1586490094 source:c:\users\pc\documents\c++ code blocks\pacman\matrix.cpp
+	<iostream>
+	<SDL.h>
+	<ctime>
+	<cstdlib>
+	<cmath>
+	"Matrix.h"
+	"Pacman.h"
+
+1586186799 c:\users\pc\documents\c++ code blocks\pacman\matrix.h
+	<iostream>
+	<SDL.h>
+	<ctime>
+	<cstdlib>
+	<cmath>
+	"Pacman.h"
+
+1586186799 source:f:\git_rt\testgit\pacman\main.cpp
+	<iostream>
+	<SDL.h>
+	<ctime>
+	<cstdlib>
+	<cmath>
+	"Pacman.h"
+	"Matrix.h"
+
+1585811467 f:\git_rt\testgit\pacman\pacman.h
+	<iostream>
+	<SDL.h>
+	<ctime>
+	<cstdlib>
+	<cmath>
+
+1586186799 f:\git_rt\testgit\pacman\matrix.h
+	<iostream>
+	<SDL.h>
+	<ctime>
+	<cstdlib>
+	<cmath>
+	"Pacman.h"
+
+1586490094 source:f:\git_rt\testgit\pacman\matrix.cpp
+	<iostream>
+	<SDL.h>
+	<ctime>
+	<cstdlib>
+	<cmath>
+	"Matrix.h"
+	"Pacman.h"
+
+1585811467 source:f:\git_rt\testgit\pacman\pacman.cpp
+	<iostream>
+	<SDL.h>
+	<ctime>
+	<cstdlib>
+	<cmath>
+
