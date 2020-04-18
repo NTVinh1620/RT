@@ -36,6 +36,8 @@
 		<Unit filename="Matrix.h" />
 		<Unit filename="Pacman.cpp" />
 		<Unit filename="Pacman.h" />
+		<Unit filename="SDL_Utils.cpp" />
+		<Unit filename="SDL_Utils.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

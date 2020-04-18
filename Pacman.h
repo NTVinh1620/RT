@@ -21,11 +21,6 @@ const SDL_Color GREEN_COLOR = {0, 128, 0};
 
 const SDL_Color DEFAULT_COLOR = BLACK_COLOR;
 
-void logSDLError(std::ostream& os, const std::string &msg, bool fatal = false);
-void initSDL(SDL_Window* &window, SDL_Renderer* &renderer);
-void quitSDL(SDL_Window* window, SDL_Renderer* renderer);
-void waitUntilKeyPressed();
-
 void setColor(SDL_Color color, SDL_Renderer* renderer);
 
 #endif

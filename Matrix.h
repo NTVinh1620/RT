@@ -16,6 +16,7 @@ const int XMIN = 400;
 const int YMIN = 50;
 const int WALL = 1;
 const int SPACE = 0;
+const int DOT = 2;
 
 struct ToaDo {
     int x;
@@ -23,8 +24,6 @@ struct ToaDo {
     int size = 5;
     int StepX = 0;
     int StepY = 0;
-
-    ToaDo(int _x, int _y) :x(_x), y(_y) {}
 
     void render(SDL_Renderer* renderer) {
         SDL_Rect filledRect;
@@ -46,29 +45,30 @@ struct ToaDo {
     }
 
     void turnLeft() {
-        StepX = -10;
+        StepX = -15;
         StepY = 0;
     }
 
     void turnRight() {
-        StepX = 10;
+        StepX = 15;
         StepY = 0;
     }
 
     void turnDown() {
         StepX = 0;
-        StepY = 10;
+        StepY = 15;
     }
 
     void turnUp() {
         StepX = 0;
-        StepY = -10;
+        StepY = -15;
     }
 };
 
 class Matrix {
 private:
     int matrix[XMAX+3][YMAX+3];
+    ToaDo Pac;
 public:
     void menu(SDL_Renderer* renderer);
     void creatMap();

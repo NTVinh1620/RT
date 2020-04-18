@@ -5,6 +5,7 @@
 #include <cmath>
 #include "Pacman.h"
 #include "Matrix.h"
+#include "SDL_Utils.h"
 
 using namespace std;
 
@@ -17,8 +18,7 @@ int main(int argc, char* argv[]) {
     initSDL(window, renderer);
 
     Matrix P;
-    //setColor(WHITE_COLOR, renderer);
-    //P.completeMap(renderer);
+
     P.menu(renderer);
     SDL_RenderPresent(renderer);
 
