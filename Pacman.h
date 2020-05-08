@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <SDL.h>
+#include <SDL_image.h>
 #include <ctime>
 #include <cstdlib>
 #include <cmath>
@@ -18,10 +19,15 @@ const SDL_Color RED_COLOR = {255, 0, 0};
 const SDL_Color WHITE_COLOR = {255, 255, 255};
 const SDL_Color BLACK_COLOR = {0, 0, 0};
 const SDL_Color GREEN_COLOR = {0, 128, 0};
-
 const SDL_Color DEFAULT_COLOR = BLACK_COLOR;
 
 void setColor(SDL_Color color, SDL_Renderer* renderer);
+
+void CleanUp();
+
+SDL_Rect RectPac(SDL_Renderer* renderer);
+SDL_Rect RectGhost(SDL_Renderer* renderer);
+SDL_Rect RectHeart(SDL_Renderer* renderer);
 
 #endif
 

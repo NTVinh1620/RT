@@ -34,6 +34,7 @@
 		</Compiler>
 		<Unit filename="Matrix.cpp" />
 		<Unit filename="Matrix.h" />
+		<Unit filename="Object.h" />
 		<Unit filename="Pacman.cpp" />
 		<Unit filename="Pacman.h" />
 		<Unit filename="SDL_Utils.cpp" />
