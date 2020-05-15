@@ -39,7 +39,7 @@
 	<cmath>
 	"Pacman.h"
 
-1588870115 source:f:\git_rt\testgit\pacman\main.cpp
+1589562523 source:f:\git_rt\testgit\pacman\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -49,8 +49,10 @@
 	"Pacman.h"
 	"Matrix.h"
 	"SDL_Utils.h"
+	<SDL_ttf.h>
+	<SDL_mixer.h>
 
-1588870115 f:\git_rt\testgit\pacman\pacman.h
+1589550505 f:\git_rt\testgit\pacman\pacman.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -58,7 +60,7 @@
 	<cstdlib>
 	<cmath>
 
-1588870115 f:\git_rt\testgit\pacman\matrix.h
+1589533715 f:\git_rt\testgit\pacman\matrix.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -68,7 +70,7 @@
 	"Pacman.h"
 	"Object.h"
 
-1588870197 source:f:\git_rt\testgit\pacman\matrix.cpp
+1589562765 source:f:\git_rt\testgit\pacman\matrix.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -80,13 +82,16 @@
 	"SDL_Utils.h"
 	"Object.h"
 
-1588870165 source:f:\git_rt\testgit\pacman\pacman.cpp
+1589550505 source:f:\git_rt\testgit\pacman\pacman.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
 	<ctime>
 	<cstdlib>
 	<cmath>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	"Pacman.h"
 
 1588421178 f:\git_rt\testgit\pacman\sdl_utils.h
 	<iostream>
@@ -104,7 +109,7 @@
 	<cstdlib>
 	<cmath>
 
-1588870115 f:\git_rt\testgit\pacman\object.h
+1589379217 f:\git_rt\testgit\pacman\object.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>

@@ -40,13 +40,13 @@ struct PacObject {
 
     void movePac() {
         x += StepX;
-        if (x < XMIN || x > XMAX) {
+        /*if (x < XMIN || x > XMAX) {
             x -= StepX;
-        }
+        }*/
         y += StepY;
-        if (y < YMIN || y > YMAX) {
+        /*if (y < YMIN || y > YMAX) {
             y -= StepY;
-        }
+        }*/
     }
 
     void turnLeft() {

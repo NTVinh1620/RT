@@ -20,6 +20,7 @@ using namespace std;
 #define SPACE 0
 #define DOT 2
 #define LIFE 2
+#define SCORE 1
 
 class Matrix {
 private:
@@ -28,7 +29,7 @@ private:
     GhostObject Ghost;
     LifeNumber Heart;
 public:
-    void menu(SDL_Renderer* renderer, SDL_Event e);
+    void GeneralHandling(SDL_Renderer* renderer, SDL_Event e);
     void creatMap();
     void drawMap(SDL_Renderer* renderer);
     void drawWall(SDL_Renderer* renderer);

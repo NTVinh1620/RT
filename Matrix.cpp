@@ -32,6 +32,19 @@ void Matrix::creatMap() {
     for (int i = YMIN+60; i <= YMAX-60; i+=15) {
         matrix[XMAX-60][i] = WALL;
     }
+
+    for (int i = XMIN; i <= XMAX; i+=15) {
+        matrix[i][YMIN-15] = WALL;
+    }
+    for (int i = XMIN; i <= XMAX; i+=15) {
+        matrix[i][YMAX+15] = WALL;
+    }
+    for (int i = YMIN; i <= YMAX; i+=15) {
+        matrix[XMIN-15][i] = WALL;
+    }
+    for (int i = YMIN; i <= YMAX; i+=15) {
+        matrix[XMAX+15][i] = WALL;
+    }
 }
 
 void Matrix::drawWall(SDL_Renderer* renderer) {
@@ -72,7 +85,7 @@ void Matrix::GhostAction() {
     }
 }
 
-void Matrix::menu(SDL_Renderer* renderer, SDL_Event e) {
+void Matrix::GeneralHandling(SDL_Renderer* renderer, SDL_Event e) {
     Pac.x = XMIN;
     Pac.y = YMIN;
 
@@ -83,12 +96,18 @@ void Matrix::menu(SDL_Renderer* renderer, SDL_Event e) {
     Heart.y = YMIN;
 
     creatMap();
+
     int life = LIFE;
+    int score = SCORE;
+
+    bool exit = true;
+    string s = "Score: ";
+    string str = ":";
 
     while (true) {
         bool col = collision(Pac.x, Ghost.x, Pac.y, Ghost.y);
-        cout << Pac.x << " " << Pac.y << endl;
-        cout << Ghost.x << " " << Ghost.y << endl << endl;
+        string clife = to_string(life);
+        string cscore = to_string(score);
         if (col) {
             Pac.x = XMIN;
             Pac.y = YMIN;
@@ -98,7 +117,7 @@ void Matrix::menu(SDL_Renderer* renderer, SDL_Event e) {
             life--;
             SDL_Delay(500);
         }
-        if (life == 0) break;
+        if (life == 0 || score == 904) break;
 
         setColor(BLACK_COLOR, renderer);
         SDL_RenderClear(renderer);
@@ -113,18 +132,30 @@ void Matrix::menu(SDL_Renderer* renderer, SDL_Event e) {
         if (matrix[Pac.x-15][Pac.y] == WALL && e.key.keysym.sym == SDLK_LEFT) {
             Pac.stop();
         }
-        if (matrix[Pac.x+15][Pac.y] == WALL && e.key.keysym.sym == SDLK_RIGHT) {
+        else if (matrix[Pac.x+15][Pac.y] == WALL && e.key.keysym.sym == SDLK_RIGHT) {
             Pac.stop();
         }
-        if (matrix[Pac.x][Pac.y-15] == WALL && e.key.keysym.sym == SDLK_UP) {
+        else if (matrix[Pac.x][Pac.y-15] == WALL && e.key.keysym.sym == SDLK_UP) {
             Pac.stop();
         }
-        if (matrix[Pac.x][Pac.y+15] == WALL && e.key.keysym.sym == SDLK_DOWN) {
+        else if (matrix[Pac.x][Pac.y+15] == WALL && e.key.keysym.sym == SDLK_DOWN) {
             Pac.stop();
+        }
+
+        if (!(Pac.StepX == 0 && Pac.StepY == 0)) {
+            if (matrix[Pac.x-15][Pac.y] == DOT && matrix[Pac.x][Pac.y] == SPACE) score++;
+            else if (matrix[Pac.x+15][Pac.y] == DOT && matrix[Pac.x][Pac.y] == SPACE) score++;
+            else if (matrix[Pac.x][Pac.y-15] == DOT && matrix[Pac.x][Pac.y] == SPACE) score++;
+            else if (matrix[Pac.x][Pac.y+15] == DOT && matrix[Pac.x][Pac.y] == SPACE) score++;
         }
 
         drawWall(renderer);
         drawMap(renderer);
+
+        DrawText(renderer, clife, XMAX+150, YMIN-20);
+        DrawText(renderer, str, XMAX+115, YMIN-20);
+        DrawText(renderer, s, XMAX+25, YMIN+25);
+        DrawText(renderer, cscore, XMAX+150, YMIN+25);
 
         SDL_RenderPresent(renderer);
         SDL_Delay(100);
@@ -133,6 +164,8 @@ void Matrix::menu(SDL_Renderer* renderer, SDL_Event e) {
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_KEYDOWN) {
                 switch (e.key.keysym.sym) {
+                    case SDLK_ESCAPE: exit = false;
+                        break;
                     case SDLK_LEFT: Pac.turnLeft();
                         break;
                     case SDLK_RIGHT: Pac.turnRight();
@@ -145,21 +178,22 @@ void Matrix::menu(SDL_Renderer* renderer, SDL_Event e) {
                 }
             }
         }
+        if (!exit) break;
 
         GhostAction();
 
         if (matrix[Pac.x-15][Pac.y] == WALL && e.key.keysym.sym == SDLK_LEFT) {
             Pac.stop();
         }
-        if (matrix[Pac.x+15][Pac.y] == WALL && e.key.keysym.sym == SDLK_RIGHT) {
+        else if (matrix[Pac.x+15][Pac.y] == WALL && e.key.keysym.sym == SDLK_RIGHT) {
             Pac.stop();
         }
-        if (matrix[Pac.x][Pac.y-15] == WALL && e.key.keysym.sym == SDLK_UP) {
+        else if (matrix[Pac.x][Pac.y-15] == WALL && e.key.keysym.sym == SDLK_UP) {
             Pac.stop();
         }
-        if (matrix[Pac.x][Pac.y+15] == WALL && e.key.keysym.sym == SDLK_DOWN) {
+        else if (matrix[Pac.x][Pac.y+15] == WALL && e.key.keysym.sym == SDLK_DOWN) {
             Pac.stop();
         }
     }
-    waitUntilKeyPressed();
+    SDL_RenderPresent(renderer);
 }
