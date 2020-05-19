@@ -24,11 +24,16 @@ SDL_Surface* surfaceHeart = NULL;
 SDL_Texture* texture = NULL;
 SDL_Surface* surface = NULL;
 
-/*bool askIfContinue() {
-    bool is_quit = true;
+bool askIfContinue() {
+    bool is_quit = false;
+
+    setColor(GREEN_COLOR, renderer);
+    SDL_RenderClear(renderer);
 
     string again = "Play Again";
-    DrawText(renderer, again, 425, 300);
+    string fagain = "Y/N";
+    DrawText(renderer, again, 530, 300);
+    DrawText(renderer, fagain, 595, 360);
 
     while (!is_quit) {
         while (SDL_PollEvent(&e)) {
@@ -42,14 +47,14 @@ SDL_Surface* surface = NULL;
                         break;
                     case SDLK_y: return true;
                         break;
+                    case SDLK_ESCAPE: return false;
                     default: break;
                 }
             }
-            //PlayAudio("background.wav");
         }
         SDL_RenderPresent(renderer);
     }
-}*/
+}
 
 int main(int argc, char* argv[]) {
     srand(time(0));
@@ -90,12 +95,12 @@ int main(int argc, char* argv[]) {
         SDL_RenderPresent(renderer);
     }
 
-    //bool playAgain = false;
-    //do {
-        SDL_RenderClear(renderer);
+    bool playAgain = false;
+    do {
         P.GeneralHandling(renderer, e);
-        //playAgain = askIfContinue();
-    //} while (playAgain);
+        SDL_RenderClear(renderer);
+        playAgain = askIfContinue();
+    } while (playAgain);
 
     CleanUp();
     quitSDL(window, renderer);

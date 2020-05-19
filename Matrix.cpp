@@ -12,7 +12,7 @@
 using namespace std;
 
 int Matrix::random() {
-    return rand() % 40;
+    return rand() % 16;
 }
 
 bool Matrix::collision(int x1, int x2, int y1, int y2) {
@@ -73,7 +73,7 @@ void Matrix::drawMap(SDL_Renderer* renderer) {
 
 void Matrix::GhostAction() {
     switch (random()) {
-        case 2: Ghost.turnLeft();
+        case 0: Ghost.turnLeft();
             break;
         /*case 4: Ghost.turnRight();
             break;
@@ -100,11 +100,11 @@ void Matrix::GeneralHandling(SDL_Renderer* renderer, SDL_Event e) {
     int life = LIFE;
     int score = SCORE;
 
-    bool exit = true;
+    bool exit = false;
     string s = "Score: ";
     string str = ":";
 
-    while (true) {
+    while (!exit) {
         bool col = collision(Pac.x, Ghost.x, Pac.y, Ghost.y);
         string clife = to_string(life);
         string cscore = to_string(score);
@@ -117,7 +117,7 @@ void Matrix::GeneralHandling(SDL_Renderer* renderer, SDL_Event e) {
             life--;
             SDL_Delay(500);
         }
-        if (life == 0 || score == 904) break;
+        if (life == 0 || score == 904) exit = true;
 
         setColor(BLACK_COLOR, renderer);
         SDL_RenderClear(renderer);
@@ -160,11 +160,14 @@ void Matrix::GeneralHandling(SDL_Renderer* renderer, SDL_Event e) {
         SDL_RenderPresent(renderer);
         SDL_Delay(100);
 
-        if (e.type == SDL_QUIT) break;
+        if (e.type == SDL_QUIT) {
+            exit = true;
+            break;
+        }
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_KEYDOWN) {
                 switch (e.key.keysym.sym) {
-                    case SDLK_ESCAPE: exit = false;
+                    case SDLK_ESCAPE: exit = true;
                         break;
                     case SDLK_LEFT: Pac.turnLeft();
                         break;
@@ -178,7 +181,6 @@ void Matrix::GeneralHandling(SDL_Renderer* renderer, SDL_Event e) {
                 }
             }
         }
-        if (!exit) break;
 
         GhostAction();
 
@@ -196,4 +198,22 @@ void Matrix::GeneralHandling(SDL_Renderer* renderer, SDL_Event e) {
         }
     }
     SDL_RenderPresent(renderer);
+
+    setColor(CYAN_COLOR, renderer);
+    SDL_RenderClear(renderer);
+    string fscore = to_string(score);
+    string f_end = "You win";
+    string s_end = "You lose";
+    string result = "Your score: ";
+    DrawText(renderer, result, 500, 300);
+    DrawText(renderer, fscore, 720, 300);
+    if (life == 0) {
+        DrawText(renderer, s_end, 550, 250);
+    }
+    else if (score == 904) {
+        DrawText(renderer, f_end, 550, 250);
+    }
+    SDL_RenderPresent(renderer);
+    SDL_Delay(1000);
+    //waitUntilKeyPressed();
 }
